@@ -1,0 +1,229 @@
+/* stylelint-disable */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here.
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --radius: 0.375rem;
+    /* 线性设计 - 锌灰色系 */
+    --background: 0 0% 100%;
+    --foreground: 240 5.3% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 5.3% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 5.3% 11%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    /* 优先级颜色 */
+    --priority-high: 0 84.2% 60.2%;
+    --priority-medium: 45 93.4% 47.5%;
+    /* 图表颜色 */
+    --chart-1: 240 5.9% 10%;
+    --chart-2: 240 3.8% 46.1%;
+    --chart-3: 240 4.8% 95.9%;
+    --chart-4: 0 84.2% 60.2%;
+    --chart-5: 45 93.4% 47.5%;
+    /* 侧边栏 */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 11%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 240 5.9% 90%;
+    --sidebar-ring: 240 5.9% 10%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --priority-high: 0 72.2% 50.6%;
+    --priority-medium: 45 93.4% 47.5%;
+    --chart-1: 0 0% 98%;
+    --chart-2: 240 5% 64.9%;
+    --chart-3: 240 3.7% 15.9%;
+    --chart-4: 0 72.2% 50.6%;
+    --chart-5: 45 93.4% 47.5%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 0 0% 98%;
+    --sidebar-primary-foreground: 240 5.9% 10%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 240 4.9% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'SF Pro Display', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  /* 精致的渐变背景 */
+  .gradient-bg {
+    background: linear-gradient(
+      135deg,
+      hsl(240, 10%, 98%) 0%,
+      hsl(240, 8%, 96%) 50%,
+      hsl(240, 10%, 97%) 100%
+    );
+    position: relative;
+  }
+
+  .gradient-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .dark .gradient-bg {
+    background: linear-gradient(
+      135deg,
+      hsl(240, 10%, 4%) 0%,
+      hsl(240, 8%, 6%) 50%,
+      hsl(240, 10%, 5%) 100%
+    );
+  }
+
+  /* 玻璃拟态效果 */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.04),
+      0 2px 8px rgba(0, 0, 0, 0.02),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
+
+  .dark .glass-card {
+    background: rgba(30, 30, 35, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      0 2px 8px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  /* 精致的悬浮效果 */
+  .hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+      0 12px 40px rgba(0, 0, 0, 0.08),
+      0 4px 12px rgba(0, 0, 0, 0.04);
+  }
+
+  /* 优先级徽章光晕 */
+  .priority-badge-high {
+    background: linear-gradient(135deg, hsl(0, 84%, 60%), hsl(0, 84%, 65%));
+    box-shadow: 
+      0 0 0 3px hsla(0, 84%, 60%, 0.1),
+      0 2px 8px hsla(0, 84%, 60%, 0.3);
+  }
+
+  .priority-badge-medium {
+    background: linear-gradient(135deg, hsl(45, 93%, 48%), hsl(45, 93%, 53%));
+    box-shadow: 
+      0 0 0 3px hsla(45, 93%, 48%, 0.1),
+      0 2px 8px hsla(45, 93%, 48%, 0.3);
+  }
+
+  /* 数字字体 */
+  .stat-number {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' on, 'lnum' on;
+    letter-spacing: -0.02em;
+  }
+
+  /* 柔和的分隔线 */
+  .soft-divider {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--border)) 20%,
+      hsl(var(--border)) 80%,
+      transparent
+    );
+    height: 1px;
+  }
+
+  /* 完成任务的优雅过渡 */
+  .task-completed {
+    animation: taskComplete 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  @keyframes taskComplete {
+    0% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      opacity: 0.5;
+      transform: translateY(2px) scale(0.98);
+    }
+    100% {
+      opacity: 0.6;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  /* 渐变文字 */
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(var(--foreground)), hsl(var(--muted-foreground)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+}
